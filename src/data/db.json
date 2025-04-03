@@ -1,0 +1,82 @@
+{
+    "objetivos": [
+        {
+            "id": "obj-01",
+            "nome": "Objetivo 01",
+            "statusId": 1,
+            "diretoria": 100,
+            "tags": [
+                "Estratégico",
+                "Tático",
+                "Operacional"
+            ]
+        }
+    ],
+    "projetos": [
+        {
+            "id": "proj-01",
+            "nome": "Projeto 01",
+            "objetivoId": "obj-01",
+            "statusId": 1,
+            "diretoria": 100,
+            "tags": [
+                "Estratégico",
+                "Tático",
+                "Operacional"
+            ]
+        }
+    ],
+    "etapas": [
+        {
+            "id": "etapa01",
+            "nome": "Projeto 01",
+            "objetivoId": "obj-01",
+            "projetoId": "proj-01",
+            "statusId": 1,
+            "diretoriaId": 100,
+            "tags": [
+                "Estratégico",
+                "Tático",
+                "Operacional"
+            ]
+        }
+    ],
+    "status": [
+        {
+            "id": 1,
+            "nome": "Atrasado",
+            "cor": "#e84c3d"
+        }
+    ],
+    "diretorias": [
+        {
+            "id": 100,
+            "nome": "Diretoria de Produto",
+            "sigla": "DPO"
+        },
+        {
+            "id": 101,
+            "nome": "Diretoria Administrativa",
+            "sigla": "DADM"
+        },
+        {
+            "id": 101,
+            "nome": "Diretoria Comercial",
+            "sigla": "DCOM"
+        }
+    ],
+    "responsavel": [
+        {
+            "id": 100,
+            "nome": "Rodolfo Batista"
+        },
+        {
+            "id": 101,
+            "nome": "Antonio Carlos"
+        },
+        {
+            "id": 101,
+            "nome": "André Santos"
+        }
+    ]
+}

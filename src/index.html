@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+<img src="/public/img/chatbot.png" alt="Chatbot">
+
+    <script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+    <div class="blip-balao">
+    <script>
+        (function () {
+            window.onload = function () {
+                const blipChat = new BlipChat()
+                    .withAppKey('dGVzdGU2Mzg2Njk1NDY0NDU2NjEzNzg6NmZmNDRhYWQtYmViYS00ODJhLWJhMzctZDA0ZDIwOTA5ZWU1')
+                    .withButton({ "color": "#0096fa", "icon": "" }) 
+                    .withCustomCommonUrl('https://marcelle-de-paula-j461y.chat.blip.ai/') 
+                    .build();
+
+                blipChat.on('send-message', async function (message) {
+                    const userMessage = message.content;
+                    console.log("Mensagem do usuário: ", userMessage);
+
+                    // envia para o endpoint
+                    try {
+                        const response = await fetch('https://cb53-187-111-88-133.ngrok-free.app', { 
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ pergunta: userMessage }), 
+                        });
+
+                        const data = await response.json();
+                        console.log("Resposta da API: ", data);
+
+                        // resposta
+                        blipChat.sendMessage({
+                            type: 'text/plain',
+                            content: data.response || "Não consegui processar sua pergunta.",
+                        });
+                    } catch (error) {
+                        console.error("Erro ao enviar a mensagem para a API:", error);
+                    }
+                });
+            };
+        })();
+    </script>
+    </div>
+</body>
+</html>
